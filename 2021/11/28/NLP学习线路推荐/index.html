@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="NLP学习线路推荐"><meta name="keywords" content="知乎,自然语言处理"><meta name="author" content="Haowei"><meta name="copyright" content="Haowei"><title>NLP学习线路推荐 | Haowei-Hub</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '5.4.0'
+} </script><meta name="generator" content="Hexo 5.4.0"></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%88%E4%BF%AE"><span class="toc-number">1.</span> <span class="toc-text">先修</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8"><span class="toc-number">2.</span> <span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.1.</span> <span class="toc-text">语言模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB"><span class="toc-number">2.2.</span> <span class="toc-text">文本分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E6%A0%87%E6%B3%A8"><span class="toc-number">2.3.</span> <span class="toc-text">序列标注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98"><span class="toc-number">2.4.</span> <span class="toc-text">匹配问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6"><span class="toc-number">3.</span> <span class="toc-text">进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E7%94%B1%E5%8F%91%E5%B1%95%E4%B9%8B%E8%B7%AF"><span class="toc-number">3.1.</span> <span class="toc-text">自由发展之路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">3.2.</span> <span class="toc-text">小结</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Haowei</div><div class="author-info__description text-center">Chance favors the prepared mind.</div><div class="follow-button"><a target="_blank" rel="noopener" href="https://github.com/HowieHsu0126">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">33</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">7</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">3</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://gitee.com/Howie0126">Gitee</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F5ade6dc8f672ef4555bb5fb4ad3563a633d17faa.jpg&amp;refer=http%3A%2F%2Fi0.hdslb.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1640106300&amp;t=69b0263777fe687cedee393c0b465909)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Haowei-Hub</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">博客</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">NLP学习线路推荐</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-11-28</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Natural-Language-Processing/">Natural Language Processing</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">3k</span><span class="post-meta__separator">|</span><span>阅读时长: 8 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
+<p><strong>导读</strong>：大家好，我是机智的叉烧，这是我NLP.TM系列下的第23篇文章(部分文章还未更新到知乎中，微信公众号下有)。本文是自己在有一定经验，结合时代变迁，资料逐步完善后，回头总结的NLP学习线路。<br>更多文章欢迎关注：<br>我的专栏：数学·数据·计算机<br>我的公众号：CS的陋室</p>
+</blockquote>
+<p>之前写过一篇和这个非常接近的内容：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/64026730">机智的叉烧：我的NLP学习之路648 赞同 · 96 评论文章</a></p>
+<p>开始谈之前，还是先说明一下我下面内容的思路和一些看法。</p>
+<ul>
+<li>内容在精不在多，我不会堆砌大量资料，而是精心选择一些适合各个阶段的一个或者几个。我发现大部分时候，收藏了大量资料你也不见得会学，那意义可就不大了。</li>
+<li>和打游戏一样有简单模式和困难模式，简单模式玩起来舒服，但是收获会少，困难模式玩起来难受，但是收获会多，想要收获多没毛病，但是也要分析好自己的能力，量力而行，最重要的是，游戏要通关了，才会有最终的收获。</li>
+<li>基础打好再来走下一步，否则寸步难行。</li>
+<li>基础内容现在可以开始看中文了，本身基础不好看英文会很吃力，理解效果也不好。但是，英文欠的债迟早要还，前沿的内容很多都是英文了。</li>
+<li>基础不好，根基不稳，迟早会出问题。</li>
+<li>特定营销号制造的焦虑，没必要。</li>
+<li>NLP领域，我感觉还没有非常完善的书本和课程，很多书也浅尝辄止，博客知识有比较零散不成体系。所以打开这里的注意一下，我关心的是你要具备什么和怎么具备，而不是简单的给你推材料，毕竟你的目标是学到东西而不是积累材料对吧。</li>
+<li>理论和开发，两个都不能少。</li>
+</ul>
+<p>要是想看体系化的东西，我只推荐下面几个。</p>
+<ul>
+<li>CS224n课程，这应该是我看的NLP最为完善，理论和技术兼具的课程。笔记的话可以看看这个：<a href="https://link.zhihu.com/?target=https://looperxx.github.io/CS224n-2019-01-Introduction%20and%20Word%20Vectors/">https://looperxx.github.io/CS224n-2019-01-Introduction%20and%20Word%20Vectors/</a></li>
+<li>统计自然语言处理、文本数据挖掘、基于深度学习的自然语言处理。理论综述，里面会有基础知识，但更多是论文，给了超级多的论文。</li>
+<li>《tensorflow与自然语言处理应用》，这本书除了序列标注这块不是很完善，别的都还好。</li>
+</ul>
+<p>下面我来和大家谈谈，NLP领域的学习线路。</p>
+<h2 id="先修"><a href="#先修" class="headerlink" title="先修"></a>先修</h2><p>下面的内容，默认你已经学会。</p>
+<ul>
+<li>基础的数学知识吧，高数线代概率统计。</li>
+<li>统计学习方法内的知识已经覆盖。（包括条件随机场，nlp里面条件随机场很重要）</li>
+<li>深度学习基础知识都没问题，全连接，CNN，RNN，GRU，LSTM等。</li>
+<li>编程能力没太大问题。（可以理解为，你有个严谨的想法，要翻译为代码的能力，具体可以体现在你做算法题的能力）</li>
+</ul>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>我的理解，满足下面条件，你就算入门了：</p>
+<ul>
+<li><p>知道自然语言处理是什么，具体任务有哪些。</p>
+</li>
+<li><p>文本的一些基础预处理，例如分词等。</p>
+</li>
+<li><p>基础简单的任务的基础解决方案及其理论基础。</p>
+</li>
+<li><ul>
+<li>基础的语言模型。词袋模型（onehot、TFIDF）word2vector必须理解完全，GloVe选学。</li>
+<li>文本分类。基于词袋模型的文本分类，fasttext（最简单快捷的文本分类模型）、TextCNN。</li>
+<li>序列标注，命名实体识别。CRF、LSTM-CRF、BiLSTM-CRF。</li>
+<li>匹配问题。BM25、DSSM。</li>
+</ul>
+</li>
+<li><p>有关的技术实现。个人还是推荐tensorflow，优先搞1。</p>
+</li>
+</ul>
+<p>例如Transformer、bert之类的东西，都不算基础，主要有几个原因：</p>
+<ul>
+<li>基础知识的理解对后续解决问题能力的提升非常重要，让你不关注于模型本身，而是解决问题，甚至是特定场景下的问题。</li>
+<li>这个点非常重要，类似word2vector之类的玩意，现在还被广泛使用，未被淘汰，transformer之类的使用门槛太高，无论是时间代价还是空间代价都很高，实现成本也不低，因此这些都不是你的第一选择。</li>
+</ul>
+<p>有关NLP是什么，建议大家看看百度百科，另外是一些NLP的教材和专著，例如统计自然语言处理，基于深度学习的自然语言处理，看一下书的第一章和最后一章，还有目录，你就会大概理解这个概念，对一个学科有了“边界”的概念。书因为具有一定的门槛，所以乱说的会少一些，</p>
+<p>预处理处理，主要是针对中文，我列举出来有这些，这些可以通过百度技术博客快速习得：</p>
+<ul>
+<li>标点符号处理——这个很基础，正则表达式即可处理。</li>
+<li>繁体转简体。看这个：<a href="https://link.zhihu.com/?target=https://blog.csdn.net/wds2006sdo/article/details/53583367">https://blog.csdn.net/wds2006sdo/article/details/53583367</a></li>
+<li>分词，最简单的还是jieba，适配的环境也比较多，主流的c++、python、java都需要会。在现实应用中，尤其是大项目，分词由于属于很上游且对下游影响重大的任务，因此选定后一般不换。（了解jieba的回答我一下，jieba里面的分词用的是那种模型？）</li>
+<li>英文的话补充一点点，NLTK基本能覆盖所有功能了。</li>
+</ul>
+<p>好了终于要开始讲模型了，希望大家能看下去吧。</p>
+<h3 id="语言模型"><a href="#语言模型" class="headerlink" title="语言模型"></a>语言模型</h3><p>语言模型的突破性进展几乎都是NLP发展的里程碑，毕竟语义理解和抽象化都来源于上游的语言模型。</p>
+<p>首先是词袋模型，one hot和TF-IDF是比较常见的，这块难度不是很高，百度和知乎找博客学就好了。</p>
+<p>word2vector这块，首先是基本版的大家最好能理解，一方面理论明白，对于具体的细节，大家可以看看word2vector的源码，有关H树、负采样之类的。这方面要看详情，我很建议大家看看上面CS224N里面涉及word2vector的章节，就在前几章，中文笔记也有的。具体实现可以使用gensim，自己做试验还是够用的。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/70606283">机智的叉烧：NLP.TM | 再看word2vector10 赞同 · 0 评论文章</a></p>
+<p>GloVe我之前就写过，看这里。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60392680">机智的叉烧：NLP.TM | GloVe模型的原理和实现8 赞同 · 4 评论文章</a></p>
+<p>需要补充得是，主题模型，其实这块我也理解为一种文本表示的方法，如LDA等，理论可参考一些博客，另外是gensim包和LDA之类的。</p>
+<h3 id="文本分类"><a href="#文本分类" class="headerlink" title="文本分类"></a>文本分类</h3><p>文本分类应该是NLP里面比较基础的任务了，如果要完成工程任务，非常推荐fasttext，但是建议还是能从词袋模型+机器学习的模式学到点东西。这块比较简单，到了这里词袋模型到这步大家应该了解，加上机器学习是先修，大家已经明白，至于实现上，大家可以看看网上垃圾邮件分类的例子，是一个词袋模型+朴素贝叶斯的例子。</p>
+<p>fasttxt有两个实现方法，一个是fasttext的原生工具包，另一个是gensim。说原理，原理和word2vector非常接近，如果你word2vector能看懂，其实这个也不会很难，给个博客吧：<a href="https://link.zhihu.com/?target=http://cnblogs.com/huangyc/p/9768872.html">http://cnblogs.com/huangyc/p/9768872.html</a>。</p>
+<p>说起这个gensim，出镜率不低，他其实是一个和NLP有关的工具包，里面含盖了很多工具，希望大家可以花大概1天左右看看里面的API文档，知道里面有什么。（相似的还有sklearn）</p>
+<h3 id="序列标注"><a href="#序列标注" class="headerlink" title="序列标注"></a>序列标注</h3><p>序列标注其实是一个文本分类的升级版问题，难度也随之提升，这块其实我的公众号谈的比较多了，分享给大家吧。</p>
+<p>这块的学习目标如下：</p>
+<ul>
+<li>知道序列标注的问题的实质以及核心解决思路，即能不能把具体问题抽象出来。</li>
+<li>常见模型。从CRF开始到BILSTM-CRF等，深度学习能理解的话，其实这些也不会太难。</li>
+<li>这里挺考验大家得是tensorflow的使用吧。</li>
+</ul>
+<h3 id="匹配问题"><a href="#匹配问题" class="headerlink" title="匹配问题"></a>匹配问题</h3><p>匹配问题其实并不常见，但是我想提到的一个核心点在于多输入的问题，另外有关相似度衡量的问题，也能通过学习产生理解。这里面的模型就建议大家看看DSSM即可，这块比较建议大家直接看论文，网络上比较多博客对DSSM的解读存在问题。</p>
+<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><p>这里的进阶，只是让自己能更好地往前沿走，具体的个人成长应该从这块完成后开始。这一块我只想大家对BERT带来的新模式有一个比较完整的理解，有条件的能自己启起来玩，没有条件会比较尴尬吧。</p>
+<p>涉及下面内容。</p>
+<ul>
+<li>Transformer。来自论文Attention is all you need。可能需要一些seq2seq的知识，但是只需要知道他在干什么就好，核心还是要知道transformer是什么。（不是变形金刚！！）这里的辅助材料建议看知乎。</li>
+<li>不建议直接学bert，建议从EMLO开始，语言模型整套整一遍，这整理了一整套，阅读量不大，额，我的理解可能写的有点深入，大家可以以哪个为提纲作为学习参考，这里就包含了可能很多人想学的bert，大家可以体验一下一开始就学bert和现在再来接触的感觉有什么不同。</li>
+<li>bert建议看一遍源码。</li>
+</ul>
+<p>由于我感觉大家学到这里已经基本能有一定的代码能力和自学能力，能找到适合自己的材料，所以这里的材料不单独列啦，百度知乎谷歌github走起来。</p>
+<h3 id="自由发展之路"><a href="#自由发展之路" class="headerlink" title="自由发展之路"></a>自由发展之路</h3><p>进入工作后好多前辈和我聊，对我的建议更多是有一个方向能有更加深刻的了解，所以建议大家也是找一个方向，做点有深入的学习和尝试。具体会有这些方向吧。大方向是分为NLU（理解）和NLG（生成）。</p>
+<ul>
+<li><p>NLU其实上面大家了解了很多基础了，这里就是一些更加有深度的模型了。</p>
+</li>
+<li><ul>
+<li>文本分类。</li>
+<li>序列标注。</li>
+<li>语义匹配。 </li>
+</ul>
+</li>
+<li><p>NLG重在生成，这是比较前沿的方向了，但是现实应用目前看的并不多。</p>
+</li>
+<li><ul>
+<li>自动摘要。</li>
+<li>阅读理解。</li>
+<li>机器翻译。</li>
+</ul>
+</li>
+</ul>
+<p>具体怎么学习呢，首先是内容上，建议大家走这个路线。</p>
+<ul>
+<li>bert之类的，尽可能尝试用上去，例如序列标注，可以试试bert+bilstm+crf。</li>
+<li>阅读论文和专利，不要局限在近几年的热文，也要多看看13年后的文章（具体数是个人经验吧），看看别人是怎么做的，可以从综述入手找论文来看。</li>
+<li>有一个固定的数据集，也可以是比赛，自己尝试尽可能多的模型。</li>
+</ul>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>内容会比较零散，主要以阐述知识点为主，从上面我的学习经历也可以看到，要是你真的想走在前面，那其实真没有很多很好的材料能覆盖，这就注定是一个需要自己独立完成的过程，困难和弯路固然是有，但是那些没打到我的终究让我变得强大，有问题可以随时沟通，各位共勉。</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Haowei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://howiehsu0126.github.io/2021/11/28/NLP学习线路推荐/">http://howiehsu0126.github.io/2021/11/28/NLP学习线路推荐/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://howiehsu0126.github.io">Haowei-Hub</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%9F%A5%E4%B9%8E/">知乎</a><a class="post-meta__tags" href="/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2021/11/28/%E5%A6%82%E4%BD%95%E7%B3%BB%E7%BB%9F%E6%80%A7%E5%9C%B0%E5%AD%A6%E4%B9%A0NLP-%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%EF%BC%9F/"><i class="fa fa-chevron-left">  </i><span>如何系统性地学习NLP 自然语言处理？</span></a></div><div class="next-post pull-right"><a href="/2021/11/28/NLP%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7%E8%B7%AF%E7%BA%BF%E5%9B%BE%EF%BC%9A%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E3%80%81%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E3%80%81%E6%9C%80%E4%BD%B3%E6%A8%A1%E5%9E%8B%EF%BC%8C%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A8%E8%A6%86%E7%9B%96-%E8%90%8C%E6%96%B0%E6%88%90%E9%95%BF%E5%BF%85%E5%A4%87/"><span>NLP打怪升级路线图：基础概念、常用方法、最佳模型，知识点全覆盖 | 萌新成长必备</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer class="footer-bg" style="background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F5ade6dc8f672ef4555bb5fb4ad3563a633d17faa.jpg&amp;refer=http%3A%2F%2Fi0.hdslb.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1640106300&amp;t=69b0263777fe687cedee393c0b465909)"><div class="layout" id="footer"><div class="copyright">&copy;2021 By Haowei</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">AI | Math | English & French | Computer Science | Life</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
