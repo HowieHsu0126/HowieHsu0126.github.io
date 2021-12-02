@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="TensorFlow 2.7有哪些新变化？"><meta name="keywords" content="机器学习 - TensorFlow,微信公众号"><meta name="author" content="Haowei"><meta name="copyright" content="Haowei"><title>TensorFlow 2.7有哪些新变化？ | Haowei-Hub</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b052bfe0975d2cbea2572b7ad21630a2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '5.4.0'
+} </script><meta name="generator" content="Hexo 5.4.0"></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Haowei</div><div class="author-info__description text-center">Chance favors the prepared mind.</div><div class="follow-button"><a target="_blank" rel="noopener" href="https://github.com/HowieHsu0126">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">43</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">13</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">3</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://gitee.com/Howie0126">Gitee</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F5ade6dc8f672ef4555bb5fb4ad3563a633d17faa.jpg&amp;refer=http%3A%2F%2Fi0.hdslb.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1640106300&amp;t=69b0263777fe687cedee393c0b465909)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Haowei-Hub</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">博客</a><a class="site-page" href="/gallery">相册</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">TensorFlow 2.7有哪些新变化？</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-12-02</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Machine-Learning/">Machine Learning</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">2.9k</span><span class="post-meta__separator">|</span><span>阅读时长: 12 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>近期重磅上线的 TensorFlow 2.7 通过更加清晰的错误消息、简化的堆栈信息提升了易用性，并为迁移到 TF2 的用户增加了新工具和文档。</p>
+<ul>
+<li><p>TensorFlow 2.7</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/tensorflow/tensorflow/releases">https://github.com/tensorflow/tensorflow/releases</a></p>
+</li>
+</ul>
+<p><strong>改善调试体验</strong></p>
+<p>调试代码的过程，是机器学习框架用户体验的一个基本组成部分。在 TensorFlow 2.7 中，我们大幅改善了 TensorFlow  的调试体验，提高了其效率和用户体验，这些改善包括以下三个主要变化：简化堆栈错误信息、在自定义 Keras 层的错误中显示额外的上下文信息，以及对 Keras 和 TensorFlow 中所有错误消息进行广泛审查。</p>
+<img src="https://gitee.com/Howie0126/blogImg/raw/master/img/640" alt="图片" style="zoom: 25%;" />
+
+<p><strong>简化堆栈错误信息</strong></p>
+<p>TensorFlow 现在默认对出现错误时显示的堆栈信息进行过滤，以隐藏任何来自 TensorFlow 内部代码的报错信息，让信息集中在对您而言比较重要的地方：您自己的代码。如此一来，堆栈信息变得更简单、更简短，让您能够更加轻松地理解和修复代码中的问题。</p>
+<p>如果您实际上是在调试 TensorFlow 代码库本身（例如准备 TensorFlow 的 PR），您可以通过调用 <code>tf.debugging.disable_traceback_filtering()</code> 来关闭过滤机制。</p>
+<p><strong>针对 Keras 层异常的自动上下文注入</strong></p>
+<p>编写低阶代码最常见的用例之一是创建自定义的 Keras 层，所以我们想要尽可能地降低您调试层的难度，提高调试的效率。对层进行调试时，您要做的第一件事就是打印其输入的形状和 dtype，以及其 <code>training</code> 和 <code>mask</code> 参数的值。现在，我们将这些信息自动添加到所有自定义 Keras 层的堆栈信息中。</p>
+<p>在下图中可以看到堆栈信息过滤和调用上下文信息显示的实际效果：</p>
+<img src="https://gitee.com/Howie0126/blogImg/raw/master/img/tf.jpg" alt="1" style="zoom:67%;" />
+
+<p>TensorFlow 2.7 中简化的堆栈信息</p>
+<p><strong>审查并改进 TensorFlow 和</strong> </p>
+<p><strong>Keras 代码库中的所有错误消息</strong></p>
+<p>最后，我们审查了 Keras 和 TensorFlow 代码库中的每一条错误消息（数以千计的错误位置！），并对它们进行了改进，以确保其遵循用户体验的最佳实践。一条合格的错误消息需要能够告诉您框架的预期，指出不符合框架预期的操作，并给出修复问题的相应提示。</p>
+<p><strong>改进 tf.function 错误消息</strong></p>
+<p>通过在用户代码中加入指向错误源的回溯，我们改进了两种常见的 <code>tf.function</code> 错误消息：运行时错误消息和“计算图”张量错误消息。对于其他模糊和不准确的 <code>tf.function</code> 错误消息，我们也进行了更新，提高了其清晰度和准确性。</p>
+<p>对于由用户代码引起的运行时错误消息：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@tf.function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>():</span></span><br><span class="line"> l = tf.<span class="built_in">range</span>(tf.random.uniform((), minval=<span class="number">1</span>, maxval=<span class="number">10</span>, dtype=tf.int32))</span><br><span class="line"> <span class="keyword">return</span> l[<span class="number">20</span>]</span><br></pre></td></tr></table></figure>
+
+<p>旧的错误消息摘要如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># … Python stack trace of the function call …</span></span><br><span class="line"></span><br><span class="line">InvalidArgumentError:  <span class="built_in">slice</span> index <span class="number">20</span> of dimension <span class="number">0</span> out of bounds.</span><br><span class="line">         [[node strided_slice (defined at &lt;<span class="string">&#x27;ipython-input-8-250c76a76c0e&#x27;</span>&gt;:<span class="number">5</span>) ]] [Op:__inference_f_75]</span><br><span class="line"></span><br><span class="line">Errors may have originated <span class="keyword">from</span> an <span class="built_in">input</span> operation.</span><br><span class="line">Input Source operations connected to node strided_slice:</span><br><span class="line"> <span class="built_in">range</span> (defined at<span class="string">&#x27;:4)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Function call stack:</span></span><br><span class="line"><span class="string">f</span></span><br></pre></td></tr></table></figure>
+
+<p>新的错误消息摘要如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># … Python stack trace of the function call …</span></span><br><span class="line"></span><br><span class="line">InvalidArgumentError:  <span class="built_in">slice</span> index <span class="number">20</span> of dimension <span class="number">0</span> out of bounds.</span><br><span class="line">         [[node strided_slice</span><br><span class="line"> (defined at:<span class="number">5</span>)</span><br><span class="line">]] [Op:__inference_f_15]</span><br><span class="line"></span><br><span class="line">Errors may have originated <span class="keyword">from</span> an <span class="built_in">input</span> operation.</span><br><span class="line">Input Source operations connected to node strided_slice:</span><br><span class="line">In[<span class="number">0</span>] <span class="built_in">range</span> (defined at:<span class="number">4</span>)       </span><br><span class="line">In[<span class="number">1</span>] strided_slice/stack:      </span><br><span class="line">In[<span class="number">2</span>] strided_slice/stack_1:    </span><br><span class="line">In[<span class="number">3</span>] strided_slice/stack_2:</span><br><span class="line"></span><br><span class="line">Operation defined at: (most recent call last)</span><br><span class="line"><span class="comment"># … Stack trace of the error within the function …</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>  File <span class="string">&quot;&quot;</span>, line <span class="number">7</span>, <span class="keyword">in</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>    f()</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>  File <span class="string">&quot;&quot;</span>, line <span class="number">5</span>, <span class="keyword">in</span> f</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>    <span class="keyword">return</span> l[<span class="number">20</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>主要的区别在于：现在执行 tf.function 时引发的运行时错误包含堆栈信息，可以显示错误在用户代码中的来源。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># … Original error message and information …</span></span><br><span class="line"><span class="comment"># … More stack frames …</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>  File <span class="string">&quot;&lt;ipython-input-3-250c76a76c0e&gt;&quot;</span>, line <span class="number">7</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>    f()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>  File <span class="string">&quot;&lt;ipython-input-3-250c76a76c0e&gt;&quot;</span>, line <span class="number">5</span>, <span class="keyword">in</span> f</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>    <span class="keyword">return</span> l[<span class="number">20</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>对于由以下用户代码引起的“计算图”张量错误消息：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@tf.function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">leaky_function</span>(<span class="params">a</span>):</span></span><br><span class="line"> <span class="keyword">global</span> x</span><br><span class="line"> x = a + <span class="number">1</span><span class="comment"># Bad - leaks local tensor</span></span><br><span class="line"> <span class="keyword">return</span> a + <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@tf.function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">captures_leaked_tensor</span>(<span class="params">b</span>):</span></span><br><span class="line"> b += x</span><br><span class="line"> <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line">leaky_function(tf.constant(<span class="number">1</span>))</span><br><span class="line">captures_leaked_tensor(tf.constant(<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+<p>旧的错误消息摘要如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># … Python stack trace of the function call …</span></span><br><span class="line"></span><br><span class="line">TypeError: An op outside of the function building code <span class="keyword">is</span> being passed</span><br><span class="line">a <span class="string">&quot;Graph&quot;</span> tensor. It <span class="keyword">is</span> possible to have Graph tensors</span><br><span class="line">leak out of the function building context by including a</span><br><span class="line">tf.init_scope <span class="keyword">in</span> your function building code.</span><br><span class="line">For example, the following function will fail:</span><br><span class="line"><span class="meta">  @tf.function</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">has_init_scope</span>():</span></span><br><span class="line">    my_constant = tf.constant(<span class="number">1.</span>)</span><br><span class="line">    <span class="keyword">with</span> tf.init_scope():</span><br><span class="line">      added = my_constant * <span class="number">2</span></span><br><span class="line">The graph tensor has name: add:<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>新的错误消息摘要如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># … Python stack trace of the function call …</span></span><br><span class="line"></span><br><span class="line">TypeError: Originated <span class="keyword">from</span> a graph execution error.</span><br><span class="line"></span><br><span class="line">The graph execution error <span class="keyword">is</span> detected at a node built at (most recent call last):</span><br><span class="line"><span class="comment"># … Stack trace of the error within the function …</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span> File, line <span class="number">6</span>, <span class="keyword">in</span> leaky_function</span><br><span class="line"><span class="comment"># … More stack trace of the error within the function …</span></span><br><span class="line"></span><br><span class="line">Error detected <span class="keyword">in</span> node <span class="string">&#x27;add&#x27;</span> defined at: File <span class="string">&quot;&quot;</span>, line <span class="number">6</span>, <span class="keyword">in</span> leaky_function</span><br><span class="line"></span><br><span class="line">TypeError: tf.Graph captured an external symbolic tensor. The symbolic tensor <span class="string">&#x27;add:0&#x27;</span> created by node <span class="string">&#x27;add&#x27;</span><span class="keyword">is</span> captured by the tf.Graph being executed <span class="keyword">as</span> an <span class="built_in">input</span>. But a tf.Graph isnot allowed to take symbolic tensors <span class="keyword">from</span> another graph <span class="keyword">as</span> its inputs. Make sure <span class="built_in">all</span> captured inputs of the executing tf.Graph are <span class="keyword">not</span> symbolic tensors. Use <span class="keyword">return</span> values, explicit Python <span class="built_in">locals</span> <span class="keyword">or</span> TensorFlow collections to access it. Please see https://www.tensorflow.org/guide/function<span class="comment">#all_outputs_of_a_tffunction_must_be_return_values for more information.</span></span><br></pre></td></tr></table></figure>
+
+<p>主要的区别在于：试图捕捉从无法访问的计算图所溢出张量的错误信息，现在包含堆栈报错信息，可显示张量在用户代码中的创建位置。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># … Original error message and information …</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># … More stack frames …</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span> File &lt;ipython-<span class="built_in">input</span>-<span class="number">5</span>-95ca3a98778f&gt;, line <span class="number">6</span>, <span class="keyword">in</span> leaky_function</span><br><span class="line"></span><br><span class="line">Error detected <span class="keyword">in</span> node <span class="string">&#x27;add&#x27;</span> defined at: File <span class="string">&quot;&lt;ipython-input-5-95ca3a98778f&gt;&quot;</span>, line <span class="number">6</span>, <span class="keyword">in</span> leaky_function</span><br><span class="line"></span><br><span class="line">TypeError: tf.Graph captured an external symbolic tensor. The symbolic tensor <span class="string">&#x27;add:0&#x27;</span> created by node <span class="string">&#x27;add&#x27;</span><span class="keyword">is</span> captured by the tf.Graph being executed <span class="keyword">as</span> an <span class="built_in">input</span>. But a tf.Graph isnot allowed to take symbolic tensors <span class="keyword">from</span> another graph <span class="keyword">as</span> its inputs. Make sure <span class="built_in">all</span> captured inputs of the executing tf.Graph are <span class="keyword">not</span> symbolic tensors. Use <span class="keyword">return</span> values, explicit Python <span class="built_in">locals</span> <span class="keyword">or</span> TensorFlow collections to access it. Please see https://www.tensorflow.org/guide/function<span class="comment">#all_outputs_of_a_tffunction_must_be_return_values for more information.</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>引入 tf.experimental.ExtensionType</strong></p>
+<p>用户定义的类型可以提高您项目的可读性、模块化程度和可维护性。TensorFlow 2.7.0 引入了 ExtensionType API，可用于创建用户定义的、面向对象的类型，与 TensorFlow 的 API  无缝协作。扩展程序类型是对复杂模型所使用的张量进行跟踪和组织的一个好方法。扩展程序类型还可以用于定义新的类张量类型，这种类型对“张量”的基本概念进行了专门化或扩展。要创建扩展程序类型，只需定义一个以 tf.experimental.ExtensionType 为基础的 Python 类，并使用类型注释来指定每个字段的类型：</p>
+<ul>
+<li><p>ExtensionType</p>
+<p><a target="_blank" rel="noopener" href="https://tensorflow.google.cn/guide/extension_type">https://tensorflow.google.cn/guide/extension_type</a></p>
+</li>
+<li><p>类型注释</p>
+<p><a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0484/">https://www.python.org/dev/peps/pep-0484/</a></p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TensorGraph</span>(<span class="params">tf.experimental.ExtensionType</span>):</span></span><br><span class="line">  <span class="string">&quot;&quot;&quot;A collection of labeled nodes connected by weighted edges.&quot;&quot;&quot;</span></span><br><span class="line">  edge_weights: tf.Tensor                      <span class="comment"># shape=[num_nodes, num_nodes]</span></span><br><span class="line">  node_labels: typing.Mapping[<span class="built_in">str</span>, tf.Tensor]  <span class="comment"># shape=[num_nodes]; dtype=any</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MaskedTensor</span>(<span class="params">tf.experimental.ExtensionType</span>):</span></span><br><span class="line">  <span class="string">&quot;&quot;&quot;A tensor paired with a boolean mask, indicating which values are valid.&quot;&quot;&quot;</span></span><br><span class="line">  values: tf.Tensor</span><br><span class="line">  mask: tf.Tensor       <span class="comment"># shape=values.shape; false for missing/invalid values.</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CSRSparseMatrix</span>(<span class="params">tf.experimental.ExtensionType</span>):</span></span><br><span class="line">  <span class="string">&quot;&quot;&quot;Compressed sparse row matrix (https://en.wikipedia.org/wiki/Sparse_matrix).&quot;&quot;&quot;</span></span><br><span class="line">  values: tf.Tensor     <span class="comment"># shape=[num_nonzero]; dtype=any</span></span><br><span class="line">  col_index: tf.Tensor  <span class="comment"># shape=[num_nonzero]; dtype=int64</span></span><br><span class="line">  row_index: tf.Tensor  <span class="comment"># shape=[num_rows+1]; dtype=int64</span></span><br></pre></td></tr></table></figure>
+
+<p><code>ExtensionType</code> 基类增加了一个构造函数和一些基于字段类型注释的特殊方法（类似于标准 Python 库中的 <code>typing.NamedTuple</code> 和 <code>@dataclasses.dataclass</code> ）。您可以通过覆盖这些默认值，或添加新的方法、属性或子类来选择性地自定义该类型。</p>
+<ul>
+<li><p>typing.NamedTuple</p>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/typing.html#typing.NamedTuple">https://docs.python.org/3/library/typing.html#typing.NamedTuple</a></p>
+</li>
+<li><p>@dataclasses.dataclass</p>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/dataclasses.html#dataclasses.dataclass">https://docs.python.org/3/library/dataclasses.html#dataclasses.dataclass</a></p>
+</li>
+</ul>
+<p>以下 TensorFlow API 支持扩展程序类型：</p>
+<ul>
+<li><strong>Keras：</strong>可以将扩展程序类型用作 Keras <code>Models</code> 和 <code>Layers</code> 的输入和输出。</li>
+<li><strong>数据集：</strong>可以在 <code>Datasets</code> 中加入扩展程序类型，并通过数据集 <code>Iterators</code> 进行返回。</li>
+<li><strong>TensorFlow hub：</strong>可以将扩展程序类型用作 <code>tf.hub</code> 模块的输入和输出。</li>
+<li><strong>SavedModel：</strong>可以将扩展程序类型用作 <code>SavedModel</code> 函数的输入和输出。</li>
+<li><strong>tf.function：</strong>可以将扩展程序类型用作与 <code>@tf.function</code> 修饰器一起打包的函数的参数和返回值。</li>
+<li><strong>控制流：</strong>可以通过 <code>tf.cond</code> 和 <code>tf.while_loop</code> 之类的控制流算子来使用扩展程序类型。其中包括通过 AutoGraph 添加的控制流算子。</li>
+<li><strong>tf.py_function：</strong>可以将扩展程序类型用作 <code>func</code> 参数至 <code>tf.py_function</code> 的参数和返回值。</li>
+<li><strong>Tensor 算子：</strong>可以使用分派装饰器对扩展程序类型进行扩展，以支持大多数接收 Tensor 输入的 TensorFlow 算子（如，<code>tf.matmul</code>、<code>tf.gather</code> 和 <code>tf.reduce_sum</code>）。</li>
+<li><strong>分发策略：</strong>可以将扩展程序类型用作每个副本的值。</li>
+</ul>
+<ul>
+<li><p><strong>分派装饰器</strong></p>
+<p><a target="_blank" rel="noopener" href="https://tensorflow.google.cn/guide/extension_type#tensor_api_dispatch">https://tensorflow.google.cn/guide/extension_type#tensor_api_dispatch</a></p>
+</li>
+</ul>
+<p>若要了解更多有关扩展程序类型的信息，请参阅扩展程序类型指南。</p>
+<ul>
+<li><p>扩展程序类型指南</p>
+<p><a target="_blank" rel="noopener" href="https://tensorflow.google.cn/guide/extension_type">https://tensorflow.google.cn/guide/extension_type</a></p>
+</li>
+</ul>
+<p><strong>注意：</strong><code>tf.experimental</code> 前缀表明这是一个新的 API，我们希望从实际使用中收集反馈；除非有任何不可预见的设计问题，我们计划根据 TF 实验性政策将 <code>ExtensionType</code> 迁移出实验性软件包。</p>
+<ul>
+<li><p>TF 实验性政策</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/tensorflow/community/blob/master/governance/api-reviews.md#experimental-apis">https://github.com/tensorflow/community/blob/master/governance/api-reviews.md#experimental-apis</a></p>
+</li>
+</ul>
+<p><strong>TF2 迁移更加简单！</strong></p>
+<p>为了支持有兴趣将工作负载从 TF1 迁移到 TF2 的用户，我们在 TensorFlow 网站上创建了一个新的 <code>Migrate to TF2</code> 标签，其中包括更新的指南和全新的文档，以及 Colab 中具体、可运行的示例。</p>
+<ul>
+<li><p>Migrate to TF2</p>
+<p><a target="_blank" rel="noopener" href="https://tensorflow.google.cn/guide/migrate">https://tensorflow.google.cn/guide/migrate</a></p>
+</li>
+<li><p>Colab</p>
+<p><a target="_blank" rel="noopener" href="https://colab.research.google.com/">https://colab.research.google.com/</a></p>
+</li>
+</ul>
+<p>我们还增加了一个新的 Shim 工具，可显著简化 variable_scope-based 模型向 TF2 的迁移。它有望使大多数 TF1 用户在 TF2 管道中按原样（或仅进行微小调整）运行现有模型架构，而无需重写建模代码。您可以在模型映射指南中了解更多相关信息。</p>
+<ul>
+<li><p>新的 Shim 工具</p>
+<p><a target="_blank" rel="noopener" href="https://tensorflow.google.cn/guide/migrate/model_mapping">https://tensorflow.google.cn/guide/migrate/model_mapping</a></p>
+</li>
+<li><p>模型映射</p>
+<p><a target="_blank" rel="noopener" href="https://tensorflow.google.cn/guide/migrate/model_mapping">https://tensorflow.google.cn/guide/migrate/model_mapping</a></p>
+</li>
+</ul>
+<p><strong>TensorFlow Hub 上</strong></p>
+<p><strong>新的社区贡献模型</strong></p>
+<p>自上一版 TensorFlow 发布以来，整个社区热切合作，在 TensorFlow Hub 上提供了许多新模型。</p>
+<ul>
+<li><p>TensorFlow Hub</p>
+<p><a target="_blank" rel="noopener" href="https://tensorflow.google.cn/hub">https://tensorflow.google.cn/hub</a></p>
+</li>
+</ul>
+<p>现在您可以找到 MLP-Mixer、Vision Transformers、Wav2Vec2、RoBERTa、ConvMixer、DistillBERT、YoloV5 等诸多模型。</p>
+<ul>
+<li><p>MLP-Mixer</p>
+<p><a target="_blank" rel="noopener" href="https://hub.tensorflow.google.cn/sayakpaul/collections/mlp-mixer/1">https://hub.tensorflow.google.cn/sayakpaul/collections/mlp-mixer/1</a></p>
+</li>
+<li><p>Vision Transformers<br><a target="_blank" rel="noopener" href="https://hub.tensorflow.google.cn/sayakpaul/collections/vision_transformer/1">https://hub.tensorflow.google.cn/sayakpaul/collections/vision_transformer/1</a></p>
+</li>
+<li><p>Wav2Vec2</p>
+<p><a target="_blank" rel="noopener" href="https://hub.tensorflow.google.cn/s?q=wav2vec">https://hub.tensorflow.google.cn/s?q=wav2vec</a></p>
+</li>
+<li><p>RoBERTa</p>
+<p><a target="_blank" rel="noopener" href="https://hub.tensorflow.google.cn/jeongukjae/xlm_roberta_multi_cased_L-12_H-768_A-12/1">https://hub.tensorflow.google.cn/jeongukjae/xlm_roberta_multi_cased_L-12_H-768_A-12/1</a></p>
+</li>
+<li><p>ConvMixer</p>
+<p><a target="_blank" rel="noopener" href="https://hub.tensorflow.google.cn/rishit-dagli/collections/convmixer">https://hub.tensorflow.google.cn/rishit-dagli/collections/convmixer</a></p>
+</li>
+<li><p>DistillBERT</p>
+<p><a target="_blank" rel="noopener" href="https://hub.tensorflow.google.cn/s?q=distilbert">https://hub.tensorflow.google.cn/s?q=distilbert</a></p>
+</li>
+<li><p>YoloV5</p>
+<p><a target="_blank" rel="noopener" href="https://hub.tensorflow.google.cn/neso613/lite-model/yolo-v5-tflite/tflite_model/1">https://hub.tensorflow.google.cn/neso613/lite-model/yolo-v5-tflite/tflite_model/1</a></p>
+</li>
+</ul>
+<p>所有这些模型都可以通过 TensorFlow Hub 使用。您可以在此处进一步了解有关发布模型的更多信息。</p>
+<ul>
+<li><p>此处</p>
+<p><a target="_blank" rel="noopener" href="https://tensorflow.google.cn/hub/publish">https://tensorflow.google.cn/hub/publish</a></p>
+</li>
+</ul>
+<p><strong>相关信息</strong></p>
+<p>请参阅版本说明了解更多信息。</p>
+<ul>
+<li><p>版本说明</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/tensorflow/tensorflow/releases">https://github.com/tensorflow/tensorflow/releases</a></p>
+</li>
+</ul>
+<p>欢迎随时关注 TensorFlow 博客，Twitter 或 Youtube，获悉最新动态。</p>
+<ul>
+<li><p>博客</p>
+<p><a target="_blank" rel="noopener" href="https://blog.tensorflow.google.cn/">https://blog.tensorflow.google.cn/</a></p>
+</li>
+<li><p>Twitter</p>
+<p><a target="_blank" rel="noopener" href="http://twitter.com/tensorflow">http://twitter.com/tensorflow</a></p>
+</li>
+<li><p>Youtube</p>
+<p><a target="_blank" rel="noopener" href="https://youtube.com/tensorflow">https://youtube.com/tensorflow</a></p>
+</li>
+</ul>
+<p>您可以通过 Community Spotlight 计划 向我们提交作品，分享构建成果。通过 GitHub 提交问题，或在 TensorFlow 论坛上发帖，分享您的反馈。我们欢迎您的贡献和参与，谢谢！</p>
+<ul>
+<li><p>Community Spotlight 计划</p>
+<p><a target="_blank" rel="noopener" href="http://goo.gle/TFCS">http://goo.gle/TFCS</a></p>
+</li>
+<li><p>GitHub</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/tensorflow/tensorflow/issues">https://github.com/tensorflow/tensorflow/issues</a></p>
+</li>
+<li><p>TensorFlow 论坛</p>
+<p><a target="_blank" rel="noopener" href="https://discuss.tensorflow.google.cn/">https://discuss.tensorflow.google.cn/</a></p>
+</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Haowei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://howiehsu0126.github.io/2021/12/02/TensorFlow-2-7有哪些新变化？/">http://howiehsu0126.github.io/2021/12/02/TensorFlow-2-7有哪些新变化？/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://howiehsu0126.github.io">Haowei-Hub</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-TensorFlow/">机器学习 - TensorFlow</a><a class="post-meta__tags" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/">微信公众号</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2021/12/02/%E8%87%AA%E5%B7%B1%E8%BE%9B%E8%8B%A6%E5%AD%A6%E5%AE%8C%EF%BC%8C%E7%BB%93%E6%9E%9C%E8%BD%AC%E7%9C%BC%E5%B0%B1%E5%BF%98%EF%BC%9F%E5%88%B0%E5%BA%95%E6%80%8E%E4%B9%88%E5%A4%8D%E4%B9%A0%E5%92%8C%E5%B7%A9%E5%9B%BA%E7%9F%A5%E8%AF%86%EF%BC%9F/"><span>自己辛苦学完，结果转眼就忘？到底怎么复习和巩固知识？</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="lv-container" data-id="city" data-uid="MTAyMC81NDgxNS8zMTI4NQ"><script>(function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+})(document, 'script');</script></div></div></div><footer class="footer-bg" style="background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F5ade6dc8f672ef4555bb5fb4ad3563a633d17faa.jpg&amp;refer=http%3A%2F%2Fi0.hdslb.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1640106300&amp;t=69b0263777fe687cedee393c0b465909)"><div class="layout" id="footer"><div class="copyright">&copy;2021 By Haowei</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">AI | Math | English & French | Computer Science | Life</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
