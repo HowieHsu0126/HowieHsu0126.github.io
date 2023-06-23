@@ -1,0 +1,316 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="A New Model for Learning in Graph Domains"><meta name="keywords" content="经典论文,神经架构搜索"><meta name="author" content="Haowei"><meta name="copyright" content="Haowei"><title>A New Model for Learning in Graph Domains | Haowei-Hub</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b052bfe0975d2cbea2572b7ad21630a2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '5.4.0'
+} </script><meta name="generator" content="Hexo 5.4.0"></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%91%98%E8%A6%81%E4%B8%8E%E7%BB%93%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">1 📑摘要与结论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 结论</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%94%E8%AE%B0"><span class="toc-number">2.</span> <span class="toc-text">2 💡笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E8%AF%95%E5%9B%BE%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 论文试图解决什么问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E6%98%AF%E5%90%A6%E6%98%AF%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 这是否是一个新的问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E8%A6%81%E9%AA%8C%E8%AF%81%E4%B8%80%E4%B8%AA%E4%BB%80%E4%B9%88%E7%A7%91%E5%AD%A6%E5%81%87%E8%AE%BE"><span class="toc-number">2.3.</span> <span class="toc-text">2.3
+这篇文章要验证一个什么科学假设？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%B8%E5%85%B3%E7%A0%94%E7%A9%B6%E5%A6%82%E4%BD%95%E5%BD%92%E7%B1%BB%E8%B0%81%E6%98%AF%E8%BF%99%E4%B8%80%E8%AF%BE%E9%A2%98%E5%9C%A8%E9%A2%86%E5%9F%9F%E5%86%85%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8%E7%9A%84%E7%A0%94%E7%A9%B6%E5%91%98"><span class="toc-number">2.4.</span> <span class="toc-text">2.4
+有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E4%B8%AD%E6%8F%90%E5%88%B0%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B9%8B%E5%85%B3%E9%94%AE%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.5.</span> <span class="toc-text">2.5
+🔴论文中提到的解决方案之关键是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E4%BD%93%E6%A1%86%E6%9E%B6"><span class="toc-number">2.5.1.</span> <span class="toc-text">2.5.1 主体框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E5%85%B3%E6%B3%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.5.2.</span> <span class="toc-text">2.5.2 需要关注的问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E4%B8%AD%E7%9A%84%E5%AE%9E%E9%AA%8C%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E7%9A%84"><span class="toc-number">2.6.</span> <span class="toc-text">2.6 论文中的实验是如何设计的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E4%BA%8E%E5%AE%9A%E9%87%8F%E8%AF%84%E4%BC%B0%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86%E6%98%AF%E4%BB%80%E4%B9%88%E8%AF%84%E4%BC%B0%E6%A0%87%E5%87%86%E6%98%AF%E4%BB%80%E4%B9%88baseline%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.7.</span> <span class="toc-text">2.7
+用于定量评估的数据集是什么？评估标准是什么？Baseline是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#connection-based-problems"><span class="toc-number">2.7.1.</span> <span class="toc-text">2.7.1 Connection-based problems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#label-based-problems"><span class="toc-number">2.7.2.</span> <span class="toc-text">2.7.2 Label-based problems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#general-problems"><span class="toc-number">2.7.3.</span> <span class="toc-text">2.7.3 General problems</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E4%B8%AD%E7%9A%84%E5%AE%9E%E9%AA%8C%E5%8F%8A%E7%BB%93%E6%9E%9C%E6%9C%89%E6%B2%A1%E6%9C%89%E5%BE%88%E5%A5%BD%E5%9C%B0%E6%94%AF%E6%8C%81%E9%9C%80%E8%A6%81%E9%AA%8C%E8%AF%81%E7%9A%84%E7%A7%91%E5%AD%A6%E5%81%87%E8%AE%BE"><span class="toc-number">2.8.</span> <span class="toc-text">2.8
+论文中的实验及结果有没有很好地支持需要验证的科学假设？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#connection-based-problems-1"><span class="toc-number">2.8.1.</span> <span class="toc-text">2.8.1 Connection-based
+problems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#label-based-problems-1"><span class="toc-number">2.8.2.</span> <span class="toc-text">2.8.2 Label-based problems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#general-problems-1"><span class="toc-number">2.8.3.</span> <span class="toc-text">2.8.3 General problems</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E7%AF%87%E8%AE%BA%E6%96%87%E5%88%B0%E5%BA%95%E6%9C%89%E4%BB%80%E4%B9%88%E8%B4%A1%E7%8C%AE"><span class="toc-number">2.9.</span> <span class="toc-text">2.9 这篇论文到底有什么贡献？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%91%A2%E6%9C%89%E4%BB%80%E4%B9%88%E5%B7%A5%E4%BD%9C%E5%8F%AF%E4%BB%A5%E7%BB%A7%E7%BB%AD%E6%B7%B1%E5%85%A5"><span class="toc-number">2.10.</span> <span class="toc-text">2.10
+下一步呢？有什么工作可以继续深入？</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Haowei</div><div class="author-info__description text-center">Chance favors the prepared mind.</div><div class="follow-button"><a target="_blank" rel="noopener" href="https://github.com/HowieHsu0126">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">2</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">2</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">1</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://gitee.com/Howie0126">Gitee</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F5ade6dc8f672ef4555bb5fb4ad3563a633d17faa.jpg&amp;refer=http%3A%2F%2Fi0.hdslb.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1640106300&amp;t=69b0263777fe687cedee393c0b465909)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Haowei-Hub</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">博客</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">A New Model for Learning in Graph Domains</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-06-23</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/">文献阅读</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">2.2k</span><span class="post-meta__separator">|</span><span>阅读时长: 9 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="摘要与结论">1 📑摘要与结论</h1>
+<h2 id="摘要">1.1 摘要</h2>
+<blockquote>
+<p>原文： In several applications the information is naturally
+represented by graphs. Traditional approaches cope with graphical data
+structures using a preprocessing phase which transforms the graphs into
+a set of ﬂat vectors. However, in this way, important topological
+information may be lost and the achieved results may heavily depend on
+the preprocessing stage. This paper presents a new neural model, called
+graph neural network (GNN), capable of directly processing graphs. GNNs
+extends recursive neural networks and can be applied on most of the
+practically useful kinds of graphs, including directed, undirected,
+labelled and cyclic graphs. A learning algorithm for GNNs is proposed
+and some experiments are discussed which assess the properties of the
+model.</p>
+</blockquote>
+<p><strong>翻译：==在一些应用中，信息自然用图形表示。传统方法使用预处理阶段处理图数据结构，该阶段将图形转换为一组平面向量。然而，这样做可能会丢失重要的拓扑信息，所获得的结果可能在很大程度上取决于预处理阶段。==
+本文提出了一种新的神经模型，称为图神经网络（GNN），能够直接处理图。GNN扩展了递归神经网络，可以应用于大多数实际有用的图类型，包括有向图、无向图、标记图和循环图。本文提出了一种GNN的学习算法，并讨论了一些评估模型性能的实验。</strong></p>
+<h2 id="结论">1.2 结论</h2>
+<blockquote>
+<p>原文：A new neural model, called graph neural network (GNN), was
+presented. GNNs extend recursiveneural networks, since theycan process
+alar ger class of graphs and can be used on node focused problems. Some
+preliminary experimental results confirmed that the model is very
+promising. The experimentation of the approach on larger applications is
+a matter of future research. From a theoretical point of view,it is
+interesting to study also the case when the input graph is not
+predefined but it changes during the learning procedure.</p>
+</blockquote>
+<p><strong>翻译：提出了一种新的神经网络模型，称为图神经网络（GNN）。GNN扩展了递归神经网络，因为它们可以处理一类更大的图，并且可以用于以节点为中心的问题。一些初步实验结果证实了该模型是非常有前景的。该方法在更大规模应用上的实验是未来研究的问题。从理论的角度来看，研究输入图形不是预定义的，而是在学习过程中发生变化的情况也是很有趣的。</strong></p>
+<hr />
+<h1 id="笔记">2 💡笔记</h1>
+<h2 id="论文试图解决什么问题">2.1 论文试图解决什么问题？</h2>
+<p>在一些应用中信息用图形表示。传统方法将图形转换为一组平面向量来处理图数据结构，这样做可能会丢失重要的拓扑信息，所获得的结果也可能在很大程度上取决于预处理阶段。</p>
+<h2 id="这是否是一个新的问题">2.2 这是否是一个新的问题？</h2>
+<p>图数据处理在本文以前已有很多研究工作。</p>
+<h2 id="这篇文章要验证一个什么科学假设">2.3
+这篇文章要验证一个什么科学假设？</h2>
+<p>论文要验证的是：本文提出的图神经网络模型（GNN）可以很好地直接处理图数据。</p>
+<h2 id="有哪些相关研究如何归类谁是这一课题在领域内值得关注的研究员">2.4
+有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</h2>
+<ul>
+<li>应用：
+<ol type="1">
+<li>Node focused --&gt; Object Localization</li>
+<li>Graph focused --&gt; Image Classification</li>
+</ol></li>
+<li>传统的应用通常通过预处理过程来处理图形，该预处理过程将图形转换为更简单的表示形式（例如，向量或实数序列）
+<ul>
+<li>性能和泛化性都很差</li>
+</ul></li>
+<li>RNN来直接处理图数据：将图信息编码为与节点相关联的一组状态，状态根据节点之间的拓扑关系动态更新，最后使用存储在状态中的编码计算输出
+<ul>
+<li>RNN只能处理有向图和无环图</li>
+<li>只能用于以图为中心的问题</li>
+</ul></li>
+</ul>
+<h2 id="论文中提到的解决方案之关键是什么">2.5
+🔴论文中提到的解决方案之关键是什么？</h2>
+<h3 id="主体框架">2.5.1 主体框架</h3>
+<ol type="1">
+<li><p>符号说明</p>
+<ul>
+<li>图<span class="math inline">\(G\)</span>是<span
+class="math inline">\(（N, E）\)</span>对，其中<span
+class="math inline">\(N\)</span>是节点集，<span
+class="math inline">\(E\)</span>是边集。</li>
+<li>用圆弧连接到<span class="math inline">\(n\)</span>的节点用<span
+class="math inline">\(ne[n]\)</span>表示。</li>
+<li>每个节点n都有一个标签<span class="math inline">\(l_n\)</span></li>
+<li>图中的节点n表示对象或概念，而边e表示它们的关系。</li>
+<li><span class="math inline">\(x_{ne[n]}\)</span>为节点状态</li>
+<li><span
+class="math inline">\(l_{ne[n]}\)</span>为n的邻居节点的标签</li>
+</ul></li>
+<li><p>为每一个节点n附加一个状态向量<span
+class="math inline">\(x_n\)</span>，包含邻居节点的信息，构建==transition
+function==：<span
+class="math display">\[\boldsymbol{x}_n=f_{\boldsymbol{w}}\left(\boldsymbol{l}_n,
+\boldsymbol{x}_{\mathrm{ne}[n]}, \boldsymbol{l}_{\mathrm{ne}[n]}\right),
+n \in \boldsymbol{N}\]</span> <img
+src="https://image-hosting-service-1318887812.cos.ap-nanjing.myqcloud.com/A%20new%20model%20for%20learning%20in%20graph%20domains_image_1.png"
+alt="A new model for learning in graph domains_image_1" /></p></li>
+<li><p>构建==output function==计算输出：<span
+class="math inline">\(\boldsymbol{o}_n=g
+\boldsymbol{w}\left(\boldsymbol{x}_n, \boldsymbol{l}_n\right), n \in
+\boldsymbol{N}\)</span></p></li>
+<li><p>计算所有的状态和标签，得global transition function 和 global
+output function：<span class="math display">\[
+\begin{aligned}
+\boldsymbol{x} &amp;=F_{\boldsymbol{w}}(\boldsymbol{x}, \boldsymbol{l})
+\\
+\boldsymbol{o} &amp;=G_{\boldsymbol{w}}(\boldsymbol{x}, \boldsymbol{l})
+\end{aligned}
+\]</span></p></li>
+<li><p>Loss函数：<span class="math inline">\(e
+\boldsymbol{w}=\sum_{i=1}^p\left(\boldsymbol{t}_i-\varphi
+\boldsymbol{w}\left(\boldsymbol{G}_i,
+n_i\right)\right)^2\)</span>，其中<span class="math inline">\(\varphi
+\boldsymbol{w}(\boldsymbol{G}_i, n_{i})=
+\boldsymbol{o}_n\)</span></p></li>
+</ol>
+<h3 id="需要关注的问题">2.5.2 需要关注的问题</h3>
+<ol type="1">
+<li><p>如何求解<span class="math inline">\(f_w\)</span>：<a
+target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B7%B4%E6%8B%BF%E8%B5%AB%E4%B8%8D%E5%8A%A8%E7%82%B9%E5%AE%9A%E7%90%86/9492042">Banach不动点原理</a></p></li>
+<li><p><span class="math display">\[
+\begin{aligned}
+&amp;\boldsymbol{x}_n(t+1)=f \boldsymbol{w}\left(\boldsymbol{l}_n,
+\boldsymbol{x}_{\mathrm{ne}[n]}(t),
+\boldsymbol{l}_{\mathrm{ne}[n]}\right) \text {, }\\
+&amp;\boldsymbol{o}_n(t+1)=g \boldsymbol{w}\left(\boldsymbol{x}_n(t+1),
+\boldsymbol{l}_n\right), \quad n \in \boldsymbol{N}
+\end{aligned}
+\]</span> <img
+src="https://image-hosting-service-1318887812.cos.ap-nanjing.myqcloud.com/A%20new%20model%20for%20learning%20in%20graph%20domains_image_2.png"
+alt="A new model for learning in graph domains_image_2" /></p></li>
+<li><p>如何学习两函数中的参数</p></li>
+</ol>
+<p>Step 1: 状态<span
+class="math inline">\(x_n(t)\)</span>使用上式迭代更新，直到到达固定点<span
+class="math inline">\(x(T)\)</span></p>
+<p>Step 2: 计算损失梯度<span class="math inline">\(\frac{\partial e
+\boldsymbol{w}(T)}{\partial
+\boldsymbol{w}}\)</span>，并据此基于梯度下降策略更新参数</p>
+<ol start="3" type="1">
+<li>如何实现这两个函数</li>
+</ol>
+<ul>
+<li>Linear GNN: <span class="math display">\[ h
+\boldsymbol{w}\left(\boldsymbol{l}_n, \boldsymbol{x}_u,
+\boldsymbol{l}_u\right)=\boldsymbol{A}_{n, u}
+\boldsymbol{x}_u+\boldsymbol{b}_{n}\]</span></li>
+</ul>
+<p>其中： <span class="math display">\[
+\begin{aligned}
+\boldsymbol{A}_{n, u} &amp;=\frac{\mu}{s|\operatorname{ne}[u]|} \cdot
+\operatorname{Resize}\left(\phi \boldsymbol{w}\left(\boldsymbol{l}_n,
+\boldsymbol{l}_u\right)\right) \\
+\boldsymbol{b}_n &amp;=\rho \boldsymbol{w}\left(\boldsymbol{l}_n\right)
+\end{aligned}
+\]</span> - Neural GNN: FNN来实现<span
+class="math inline">\(h_w\)</span> <span class="math display">\[
+e_{\boldsymbol{w}}=\sum_{i=1}^p\left(\boldsymbol{t}_i-\varphi
+\boldsymbol{w}\left(\boldsymbol{G}, n_i\right)\right)^2+\beta
+L\left(\left\|\frac{\partial F \boldsymbol{w}}{\partial
+\boldsymbol{x}}\right\|_1\right)
+\]</span></p>
+<h2 id="论文中的实验是如何设计的">2.6 论文中的实验是如何设计的？</h2>
+<ol type="1">
+<li>使用3层带sigmoid激活函数的FNN来实现两个模型中的函数</li>
+<li>状态的维度为2</li>
+<li>实验结果取5次平均值</li>
+<li>train 5000 epochs 每20 epochs验证一次</li>
+</ol>
+<h2 id="用于定量评估的数据集是什么评估标准是什么baseline是什么">2.7
+用于定量评估的数据集是什么？评估标准是什么？Baseline是什么？</h2>
+<h3 id="connection-based-problems">2.7.1 Connection-based problems</h3>
+<ol type="1">
+<li><strong>The Clique problem:</strong>
+<ol type="1">
+<li>数据集: 1400个带有20个节点的随机图：train 200 + val 200 + test
+1000</li>
+<li>输入: 1个图</li>
+<li>输出: 是否有size为5的clique（True = 1, False = -1）</li>
+<li>指标: Accuracy, Time</li>
+<li>基线:
+<ol type="1">
+<li>neural (Hidden = [2, 5, 10, 20, 30])</li>
+<li>linear (Hidden = [2, 5, 10, 20, 30])</li>
+</ol></li>
+</ol></li>
+<li><strong>The Neighbors problem:</strong>
+<ol type="1">
+<li>数据集: 一个有500个节点的图：train 100 + val 100 + test 300</li>
+<li>输入: 1个node</li>
+<li>输出: 该node的所有邻居节点的个数</li>
+<li>指标: absolute relative error，Training time</li>
+<li>基线:
+<ol type="1">
+<li>neural (Hidden = [2, 5, 10, 20, 30])</li>
+<li>linear (Hidden = [2, 5, 10, 20, 30])</li>
+</ol></li>
+</ol></li>
+<li><strong>The 2-order Neighborsproblem:</strong>
+<ol type="1">
+<li>数据集: 一个有500个节点的图：train 100 + val 100 + test 300</li>
+<li>输入: 1个node</li>
+<li>输出: 该node的所有邻居节点的个数 + 所有邻居的邻居节点的个数</li>
+<li>指标: absolute relative error，Training time</li>
+<li>基线:
+<ol type="1">
+<li>neural (Hidden = [2, 5, 10, 20, 30])</li>
+<li>linear (Hidden = [2, 5, 10, 20, 30])</li>
+</ol></li>
+</ol></li>
+</ol>
+<h3 id="label-based-problems">2.7.2 Label-based problems</h3>
+<ol type="1">
+<li><strong>The Parity problem:</strong>
+<ol type="1">
+<li>数据集: 2500个图：(train + val) 500 + test
+2000，每张图上的每个节点有一个包含8位布尔元素的向量（定义如果该向量有偶数个1则为偶节点，反之为奇节点）</li>
+<li>输入: 1个节点</li>
+<li>输出: 该节点是否为偶节点（True = 1, False = -1）</li>
+<li>指标: Accuracy, Time</li>
+<li>基线:
+<ol type="1">
+<li>neural (Hidden = [2, 5, 10, 20, 30])</li>
+<li>linear (Hidden = [2, 5, 10, 20, 30])</li>
+<li>FNN (Layers = 3, Hidden = 20)</li>
+</ol></li>
+</ol></li>
+</ol>
+<h3 id="general-problems">2.7.3 General problems</h3>
+<ol type="1">
+<li><strong>The Subgraph Matching problem:</strong>
+<ol type="1">
+<li>数据集: 600个相连的随机图：train 200 + val 200 + test 200</li>
+<li>输入: 1个节点</li>
+<li>输出: 该节点是否属于随机生成的子图（True = 1, False = -1）</li>
+<li>指标: Accuracy</li>
+<li>基线（子图节点个数 = [3, 5, 7, 9]；图节点个数 = [6, 10, 14, 18]）：
+<ol start="2" type="1">
+<li>neural GNN(State_dim = 5, Hidden = 5)</li>
+<li>neural linear FNN(Hidden = 20)</li>
+</ol></li>
+</ol></li>
+</ol>
+<h2 id="论文中的实验及结果有没有很好地支持需要验证的科学假设">2.8
+论文中的实验及结果有没有很好地支持需要验证的科学假设？</h2>
+<h3 id="connection-based-problems-1">2.8.1 Connection-based
+problems</h3>
+<ol type="1">
+<li>The Clique problem</li>
+</ol>
+<figure>
+<img
+src="https://image-hosting-service-1318887812.cos.ap-nanjing.myqcloud.com/A%20new%20model%20for%20learning%20in%20graph%20domains_image_3.png"
+alt="A new model for learning in graph domains_image_3" />
+<figcaption aria-hidden="true">A new model for learning in graph
+domains_image_3</figcaption>
+</figure>
+<blockquote>
+<p>结论： 1. GNN模型在该实验中没有遇到泛化性问题； 2.
+隐藏神经元的个数对Nerual GNN结果有显著影响，对Linear
+GNN的结果影响不明显； 3. 每个Epoch的时间长短与数据集和网络大小都有关</p>
+</blockquote>
+<ol start="2" type="1">
+<li>The Neighborsproblem &amp; The 2-order Neighborsproblem</li>
+</ol>
+<figure>
+<img
+src="https://image-hosting-service-1318887812.cos.ap-nanjing.myqcloud.com/A%20new%20model%20for%20learning%20in%20graph%20domains_image_4.png"
+alt="A new model for learning in graph domains_image_4" />
+<figcaption aria-hidden="true">A new model for learning in graph
+domains_image_4</figcaption>
+</figure>
+<figure>
+<img
+src="https://image-hosting-service-1318887812.cos.ap-nanjing.myqcloud.com/A%20new%20model%20for%20learning%20in%20graph%20domains_image_5.png"
+alt="A new model for learning in graph domains_image_5" />
+<figcaption aria-hidden="true">A new model for learning in graph
+domains_image_5</figcaption>
+</figure>
+<h3 id="label-based-problems-1">2.8.2 Label-based problems</h3>
+<p>The Parity problem： <img
+src="https://image-hosting-service-1318887812.cos.ap-nanjing.myqcloud.com/A%20new%20model%20for%20learning%20in%20graph%20domains_image_6.png"
+alt="A new model for learning in graph domains_image_6" /></p>
+<blockquote>
+<p>结论：GNN模型能够在解决问题不需要此类信息的情况下丢弃图拓扑中包含的信息。</p>
+</blockquote>
+<h3 id="general-problems-1">2.8.3 General problems</h3>
+<p>The Subgraph Matching problem： [[A new model for learning in graph
+domains_image_7.png]]</p>
+<h2 id="这篇论文到底有什么贡献">2.9 这篇论文到底有什么贡献？</h2>
+<p>提出了GNN模型来处理很多图问题，实验表明该模型很有前景。</p>
+<h2 id="下一步呢有什么工作可以继续深入">2.10
+下一步呢？有什么工作可以继续深入？</h2>
+<p>如何解决图未先定义条件下的GNN学习问题。</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Haowei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://howiehsu0126.github.io/2023/06/23/A-new-model-for-learning-in-graph-domains/">http://howiehsu0126.github.io/2023/06/23/A-new-model-for-learning-in-graph-domains/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://howiehsu0126.github.io">Haowei-Hub</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/">经典论文</a><a class="post-meta__tags" href="/tags/%E7%A5%9E%E7%BB%8F%E6%9E%B6%E6%9E%84%E6%90%9C%E7%B4%A2/">神经架构搜索</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2023/06/23/DARTS/"><span>DARTS：Differentiable Architecture Search</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="lv-container" data-id="city" data-uid="MTAyMC81NDgxNS8zMTI4NQ"><script>(function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+})(document, 'script');</script></div></div></div><footer class="footer-bg" style="background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F5ade6dc8f672ef4555bb5fb4ad3563a633d17faa.jpg&amp;refer=http%3A%2F%2Fi0.hdslb.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1640106300&amp;t=69b0263777fe687cedee393c0b465909)"><div class="layout" id="footer"><div class="copyright">&copy;2021 - 2023 By Haowei</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">AI | Math | English & French | Computer Science | Life</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
