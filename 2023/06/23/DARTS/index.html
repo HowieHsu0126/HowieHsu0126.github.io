@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="DARTS：Differentiable Architecture Search"><meta name="keywords" content="论文阅读,经典论文,神经架构搜索"><meta name="author" content="Haowei"><meta name="copyright" content="Haowei"><title>DARTS：Differentiable Architecture Search | Haowei-Hub</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="DARTS：Differentiable Architecture Search"><meta name="keywords" content="经典论文,神经架构搜索"><meta name="author" content="Haowei"><meta name="copyright" content="Haowei"><title>DARTS：Differentiable Architecture Search | Haowei-Hub</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?b052bfe0975d2cbea2572b7ad21630a2";
@@ -14,17 +14,17 @@
     noSupport: '浏览器不支持'
   },
   hexoVersion: '5.4.0'
-} </script><meta name="generator" content="Hexo 5.4.0"></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#note"><span class="toc-number">1.</span> <span class="toc-text">2 💡Note</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E8%AF%95%E5%9B%BE%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">2.1 论文试图解决什么问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E6%98%AF%E5%90%A6%E6%98%AF%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">2.2 这是否是一个新的问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E8%A6%81%E9%AA%8C%E8%AF%81%E4%B8%80%E4%B8%AA%E4%BB%80%E4%B9%88%E7%A7%91%E5%AD%A6%E5%81%87%E8%AE%BE"><span class="toc-number">1.3.</span> <span class="toc-text">2.3
-这篇文章要验证一个什么科学假设？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%B8%E5%85%B3%E7%A0%94%E7%A9%B6%E5%A6%82%E4%BD%95%E5%BD%92%E7%B1%BB%E8%B0%81%E6%98%AF%E8%BF%99%E4%B8%80%E8%AF%BE%E9%A2%98%E5%9C%A8%E9%A2%86%E5%9F%9F%E5%86%85%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8%E7%9A%84%E7%A0%94%E7%A9%B6%E5%91%98"><span class="toc-number">1.4.</span> <span class="toc-text">2.4
-有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E4%B8%AD%E6%8F%90%E5%88%B0%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B9%8B%E5%85%B3%E9%94%AE%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.5.</span> <span class="toc-text">2.5
-🔴论文中提到的解决方案之关键是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#search-space"><span class="toc-number">1.5.1.</span> <span class="toc-text">2.5.1 Search Space</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#continuous-relaxation-and-optimization"><span class="toc-number">1.5.2.</span> <span class="toc-text">2.5.2 Continuous
-Relaxation And Optimization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#approximate-architecture-gradient"><span class="toc-number">1.5.3.</span> <span class="toc-text">2.5.3 Approximate
-Architecture Gradient</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deriving-discrete-architectures"><span class="toc-number">1.5.4.</span> <span class="toc-text">2.5.4 Deriving Discrete
-Architectures</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#complexity-analysis"><span class="toc-number">1.5.5.</span> <span class="toc-text">2.5.5 Complexity Analysis</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E4%B8%AD%E7%9A%84%E5%AE%9E%E9%AA%8C%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E7%9A%84"><span class="toc-number">1.6.</span> <span class="toc-text">2.6 论文中的实验是如何设计的？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#architecture-search"><span class="toc-number">1.6.1.</span> <span class="toc-text">2.6.1 Architecture Search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#architecture-evaluation"><span class="toc-number">1.6.2.</span> <span class="toc-text">2.6.2 Architecture Evaluation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#parameter-analysis"><span class="toc-number">1.6.3.</span> <span class="toc-text">2.6.3 Parameter Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#alternative-optimization-strategies"><span class="toc-number">1.6.3.1.</span> <span class="toc-text">2.6.3.1 Alternative
-Optimization Strategies</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#search-with-increased-depth"><span class="toc-number">1.6.3.2.</span> <span class="toc-text">2.6.3.2 Search with Increased
-Depth</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E4%B8%AD%E7%9A%84%E5%AE%9E%E9%AA%8C%E5%8F%8A%E7%BB%93%E6%9E%9C%E6%9C%89%E6%B2%A1%E6%9C%89%E5%BE%88%E5%A5%BD%E5%9C%B0%E6%94%AF%E6%8C%81%E9%9C%80%E8%A6%81%E9%AA%8C%E8%AF%81%E7%9A%84%E7%A7%91%E5%AD%A6%E5%81%87%E8%AE%BE"><span class="toc-number">1.7.</span> <span class="toc-text">2.7
-论文中的实验及结果有没有很好地支持需要验证的科学假设？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E7%AF%87%E8%AE%BA%E6%96%87%E5%88%B0%E5%BA%95%E6%9C%89%E4%BB%80%E4%B9%88%E8%B4%A1%E7%8C%AE"><span class="toc-number">1.8.</span> <span class="toc-text">2.8 这篇论文到底有什么贡献？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%91%A2%E6%9C%89%E4%BB%80%E4%B9%88%E5%B7%A5%E4%BD%9C%E5%8F%AF%E4%BB%A5%E7%BB%A7%E7%BB%AD%E6%B7%B1%E5%85%A5"><span class="toc-number">1.9.</span> <span class="toc-text">2.9
-下一步呢？有什么工作可以继续深入？</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Haowei</div><div class="author-info__description text-center">Chance favors the prepared mind.</div><div class="follow-button"><a target="_blank" rel="noopener" href="https://github.com/HowieHsu0126">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">1</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">3</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://gitee.com/Howie0126">Gitee</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F5ade6dc8f672ef4555bb5fb4ad3563a633d17faa.jpg&amp;refer=http%3A%2F%2Fi0.hdslb.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1640106300&amp;t=69b0263777fe687cedee393c0b465909)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Haowei-Hub</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">博客</a><a class="site-page" href="/gallery">相册</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">DARTS：Differentiable Architecture Search</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-06-23</time><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">1.7k</span><span class="post-meta__separator">|</span><span>阅读时长: 9 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
+} </script><meta name="generator" content="Hexo 5.4.0"></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#note"><span class="toc-number">1.</span> <span class="toc-text">1 💡Note</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E8%AF%95%E5%9B%BE%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 论文试图解决什么问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E6%98%AF%E5%90%A6%E6%98%AF%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 这是否是一个新的问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E8%A6%81%E9%AA%8C%E8%AF%81%E4%B8%80%E4%B8%AA%E4%BB%80%E4%B9%88%E7%A7%91%E5%AD%A6%E5%81%87%E8%AE%BE"><span class="toc-number">1.3.</span> <span class="toc-text">1.3
+这篇文章要验证一个什么科学假设？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%B8%E5%85%B3%E7%A0%94%E7%A9%B6%E5%A6%82%E4%BD%95%E5%BD%92%E7%B1%BB%E8%B0%81%E6%98%AF%E8%BF%99%E4%B8%80%E8%AF%BE%E9%A2%98%E5%9C%A8%E9%A2%86%E5%9F%9F%E5%86%85%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8%E7%9A%84%E7%A0%94%E7%A9%B6%E5%91%98"><span class="toc-number">1.4.</span> <span class="toc-text">1.4
+有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E4%B8%AD%E6%8F%90%E5%88%B0%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%B9%8B%E5%85%B3%E9%94%AE%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.5.</span> <span class="toc-text">1.5
+🔴论文中提到的解决方案之关键是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#search-space"><span class="toc-number">1.5.1.</span> <span class="toc-text">1.5.1 Search Space</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#continuous-relaxation-and-optimization"><span class="toc-number">1.5.2.</span> <span class="toc-text">1.5.2 Continuous
+Relaxation And Optimization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#approximate-architecture-gradient"><span class="toc-number">1.5.3.</span> <span class="toc-text">1.5.3 Approximate
+Architecture Gradient</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deriving-discrete-architectures"><span class="toc-number">1.5.4.</span> <span class="toc-text">1.5.4 Deriving Discrete
+Architectures</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#complexity-analysis"><span class="toc-number">1.5.5.</span> <span class="toc-text">1.5.5 Complexity Analysis</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E4%B8%AD%E7%9A%84%E5%AE%9E%E9%AA%8C%E6%98%AF%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E7%9A%84"><span class="toc-number">1.6.</span> <span class="toc-text">1.6 论文中的实验是如何设计的？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#architecture-search"><span class="toc-number">1.6.1.</span> <span class="toc-text">1.6.1 Architecture Search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#architecture-evaluation"><span class="toc-number">1.6.2.</span> <span class="toc-text">1.6.2 Architecture Evaluation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#parameter-analysis"><span class="toc-number">1.6.3.</span> <span class="toc-text">1.6.3 Parameter Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#alternative-optimization-strategies"><span class="toc-number">1.6.3.1.</span> <span class="toc-text">1.6.3.1 Alternative
+Optimization Strategies</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#search-with-increased-depth"><span class="toc-number">1.6.3.2.</span> <span class="toc-text">1.6.3.2 Search with Increased
+Depth</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E4%B8%AD%E7%9A%84%E5%AE%9E%E9%AA%8C%E5%8F%8A%E7%BB%93%E6%9E%9C%E6%9C%89%E6%B2%A1%E6%9C%89%E5%BE%88%E5%A5%BD%E5%9C%B0%E6%94%AF%E6%8C%81%E9%9C%80%E8%A6%81%E9%AA%8C%E8%AF%81%E7%9A%84%E7%A7%91%E5%AD%A6%E5%81%87%E8%AE%BE"><span class="toc-number">1.7.</span> <span class="toc-text">1.7
+论文中的实验及结果有没有很好地支持需要验证的科学假设？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E7%AF%87%E8%AE%BA%E6%96%87%E5%88%B0%E5%BA%95%E6%9C%89%E4%BB%80%E4%B9%88%E8%B4%A1%E7%8C%AE"><span class="toc-number">1.8.</span> <span class="toc-text">1.8 这篇论文到底有什么贡献？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%91%A2%E6%9C%89%E4%BB%80%E4%B9%88%E5%B7%A5%E4%BD%9C%E5%8F%AF%E4%BB%A5%E7%BB%A7%E7%BB%AD%E6%B7%B1%E5%85%A5"><span class="toc-number">1.9.</span> <span class="toc-text">1.9
+下一步呢？有什么工作可以继续深入？</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Haowei</div><div class="author-info__description text-center">Chance favors the prepared mind.</div><div class="follow-button"><a target="_blank" rel="noopener" href="https://github.com/HowieHsu0126">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">1</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">2</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">1</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://gitee.com/Howie0126">Gitee</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F5ade6dc8f672ef4555bb5fb4ad3563a633d17faa.jpg&amp;refer=http%3A%2F%2Fi0.hdslb.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1640106300&amp;t=69b0263777fe687cedee393c0b465909)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Haowei-Hub</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">博客</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">DARTS：Differentiable Architecture Search</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-06-23</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/">文献阅读</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">1.7k</span><span class="post-meta__separator">|</span><span>阅读时长: 9 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
 <p>标题 - DARTS: Differentiable Architecture Search</p>
 </blockquote>
 <blockquote>
@@ -43,26 +43,26 @@ Our implementation has been made publicly available to facilitate
 further research on efficient architecture search algorithms.</p>
 </blockquote>
 <hr />
-<h1 id="note">2 💡Note</h1>
-<h2 id="论文试图解决什么问题">2.1 论文试图解决什么问题？</h2>
+<h1 id="note">1 💡Note</h1>
+<h2 id="论文试图解决什么问题">1.1 论文试图解决什么问题？</h2>
 <ul>
 <li>Dominant approaches treated the architecture search as a black-box
 optimization problem over a discrete domain, leading to a large number
 of architecture evaluation required.</li>
 <li>Efficient architecture search</li>
 </ul>
-<h2 id="这是否是一个新的问题">2.2 这是否是一个新的问题？</h2>
+<h2 id="这是否是一个新的问题">1.2 这是否是一个新的问题？</h2>
 <ul>
 <li>Numerous prior studies have explored various approaches based on
 reinforcement learning (RL), evolution, or Bayesian optimization.</li>
 <li>But DARTS approaches the problem from a different angle.</li>
 </ul>
-<h2 id="这篇文章要验证一个什么科学假设">2.3
+<h2 id="这篇文章要验证一个什么科学假设">1.3
 这篇文章要验证一个什么科学假设？</h2>
 <p>Compared with previous methods, differentiable network architecture
 search based on bilevel optimization is <strong>efficient and
 transferable.</strong></p>
-<h2 id="有哪些相关研究如何归类谁是这一课题在领域内值得关注的研究员">2.4
+<h2 id="有哪些相关研究如何归类谁是这一课题在领域内值得关注的研究员">1.4
 有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</h2>
 <ol type="1">
 <li>non-differentiable search techniques: reinforcement learning (RL),
@@ -77,7 +77,7 @@ to learning high-performance architecture building blocks with complex
 graph topologies with a rich search space.</li>
 </ul></li>
 </ol>
-<h2 id="论文中提到的解决方案之关键是什么">2.5
+<h2 id="论文中提到的解决方案之关键是什么">1.5
 🔴论文中提到的解决方案之关键是什么？</h2>
 <blockquote>
 <p>[!Note] An overview of DARTS <img
@@ -100,50 +100,45 @@ alt="1-DARTS：Differentiable Architecture Search--20230621" />
 Search--20230621</figcaption>
 </figure>
 </blockquote>
-<h3 id="search-space">2.5.1 Search Space</h3>
+<h3 id="search-space">1.5.1 Search Space</h3>
 <blockquote>
 <p>Searching for a computation <strong>cell</strong> as the building
 block of the final architecture.</p>
 </blockquote>
 <ol type="1">
-<li><p>A cell is a <strong>directed acyclic graph</strong> consisting of
-an ordered sequence of N nodes.</p></li>
-<li><p>Each node: latent representation</p></li>
-</ol>
+<li>A cell is a <strong>directed acyclic graph</strong> consisting of an
+ordered sequence of N nodes.</li>
+<li>Each node: latent representation
 <ul>
 <li>"Latent representation" refers to a representation form used in
 machine learning and deep learning to represent hidden features or
 abstract representations of data.</li>
-</ul>
-<ol start="3" type="1">
-<li><p>Each directed edge: operation</p></li>
-<li><p>Each intermediate node is computed based on all of its
-predecessors: <span class="math display">\[
-x^{(j)}=\sum_{i&lt;j} o^{(i, j)}\left(x^{(i)}\right)
-\]</span></p></li>
-<li><p>A special zero operation is also included to indicate a lack of
-connection between two nodes.</p></li>
-<li><p>learning the cell $ $ learning the operations on its
-edges.</p></li>
+</ul></li>
+<li>Each directed edge: operation</li>
+<li>Each intermediate node is computed based on all of its predecessors:
+<span class="math display">\[x^{(j)}=\sum_{i&lt;j} o^{(i,
+j)}\left(x^{(i)}\right)\]</span></li>
+<li>A special zero operation is also included to indicate a lack of
+connection between two nodes.</li>
+<li>learning the cell <span class="math inline">\(\rightarrow\)</span>
+learning the operations on its edges.</li>
 </ol>
-<h3 id="continuous-relaxation-and-optimization">2.5.2 Continuous
+<h3 id="continuous-relaxation-and-optimization">1.5.2 Continuous
 Relaxation And Optimization</h3>
 <ol type="1">
 <li><strong>Relaxation:</strong> Relax the categorical choice of a
 particular operation to a softmax over all possible operations: <span
-class="math display">\[
-  \bar{o}^{(i, j)}(x)=\sum_{o \in \mathcal{O}} \frac{\exp
-\left(\alpha_o^{(i, j)}\right)}{\sum_{o^{\prime} \in \mathcal{O}} \exp
-\left(\alpha_{o^{\prime}}^{(i, j)}\right)} o(x)
-\]</span></li>
-</ol>
+class="math display">\[\bar{o}^{(i, j)}(x)=\sum_{o \in \mathcal{O}}
+\frac{\exp \left(\alpha_o^{(i, j)}\right)}{\sum_{o^{\prime} \in
+\mathcal{O}} \exp \left(\alpha_{o^{\prime}}^{(i, j)}\right)}
+o(x)\]</span>
 <ul>
 <li><span class="math inline">\(\alpha_(i, j)\)</span>: the operation
-mixing weights for a pair of nodes</li>
-<li>learning a set of continuous variables <span
-class="math inline">\(\alpha = \{\alpha_{(i, j)}\}\)</span></li>
-</ul>
-<ol start="2" type="1">
+mixing weights for a pair of nodes <span class="math inline">\((i,
+j)\)</span></li>
+<li>learning a set of continuous variables <span class="math inline">\(α
+= \{α(i, j)\}\)</span></li>
+</ul></li>
 <li><strong>[[Bilevel optimization]]:</strong> After relaxation, our
 goal is to jointly learn the architecture <span
 class="math inline">\(\alpha\)</span> and the weights <span
@@ -151,14 +146,14 @@ class="math inline">\(w\)</span> within all the mixed operations <span
 class="math display">\[\begin{array}{cl}\min _\alpha &amp;
 \mathcal{L}_{\text {val }}\left(w^*(\alpha), \alpha\right) \\\text {
 s.t. } &amp; w^*(\alpha)=\operatorname{argmin}_w \mathcal{L}_{\text
-{train }}(w, \alpha)\end{array}\]</span></li>
-</ol>
+{train }}(w, \alpha)\end{array}\]</span>
 <ul>
 <li>optimize the validation loss, but using gradient descent.</li>
 <li>the architecture <span class="math inline">\(\alpha\)</span> could
 be viewed as a special type of hyper-parameter</li>
-</ul>
-<h3 id="approximate-architecture-gradient">2.5.3 Approximate
+</ul></li>
+</ol>
+<h3 id="approximate-architecture-gradient">1.5.3 Approximate
 Architecture Gradient</h3>
 <ol type="1">
 <li><strong>One-step Approximation:</strong> （Also can be seen in
@@ -168,14 +163,13 @@ class="math display">\[\begin{aligned} &amp; \nabla_\alpha
 \mathcal{L}_{\text {val }}\left(w^*(\alpha), \alpha\right) \\ \approx
 &amp; \nabla_\alpha \mathcal{L}_{\text {val }}\left(w-\xi \nabla_w
 \mathcal{L}_{\text {train }}(w, \alpha),
-\alpha\right)\end{aligned}\]</span></li>
-</ol>
+\alpha\right)\end{aligned}\]</span>
 <ul>
 <li><span class="math inline">\(\xi\)</span> helps to converge to a
 better local optimum</li>
-</ul>
-<ol start="2" type="1">
-<li><strong>Chain rule</strong>:</li>
+</ul></li>
+<li><strong>Chain rule</strong>:
+<ol type="1">
 <li>Let: <span class="math display">\[\begin{align*}w^\prime=f(w,
 \alpha) &amp;= w - \xi\nabla_w \mathcal{L}_{\text{train}}(w, \alpha)
 \\g(w, \alpha) &amp;= \mathcal{L}_{\text{val}}(f(w, \alpha),
@@ -204,6 +198,7 @@ l}\left(w, \alpha\right)\]</span></li>
 \alpha\right)-\xi \nabla_{\alpha, w}^2 \mathcal{L}_{\text {train }}(w,
 \alpha) \nabla_{w^{\prime}} \mathcal{L}_{\text {val }}\left(w^{\prime},
 \alpha\right)\]</span></li>
+</ol></li>
 <li><strong>Finite difference approximation</strong>：The expression
 above contains an expensive matrix-vector product in its second term.
 <span class="math display">\[\nabla_{\alpha, w}^2 \mathcal{L}_{\text
@@ -211,12 +206,11 @@ above contains an expensive matrix-vector product in its second term.
 }}\left(w^{\prime}, \alpha\right) \approx \frac{\nabla_\alpha
 \mathcal{L}_{\text {train }}\left(w^{+}, \alpha\right)-\nabla_\alpha
 \mathcal{L}_{\text {train }}\left(w^{-}, \alpha\right)}{2
-\epsilon}\]</span></li>
-</ol>
+\epsilon}\]</span>
 <ul>
-<li><p>Central difference: <span class="math inline">\(f^{\prime}(x)
-\approx \frac{f(x+h)-f(x-h)}{2 h}\)</span></p></li>
-<li><p>Taylor Formula:</p>
+<li>Central difference: <span class="math inline">\(f^{\prime}(x)
+\approx \frac{f(x+h)-f(x-h)}{2 h}\)</span></li>
+<li>Taylor Formula:
 <ol type="1">
 <li>We have: <span class="math inline">\(f(x)=\frac{f\left(x_0\right)}{0
 !}+\frac{f^{\prime}\left(x_0\right)}{1
@@ -235,7 +229,7 @@ hA+\ldots\end{aligned}\)</span></li>
 class="math inline">\(f^{\prime}\left(x_0\right) \cdot A \approx
 \frac{f\left(x_0+h A\right)-f\left(x_0-h A\right)}{2 h}\)</span></li>
 </ol></li>
-<li><p>Where:</p>
+<li>Where:
 <ol type="1">
 <li><span class="math inline">\(f^\prime(x_0)=\nabla_{\alpha, w}^2
 \mathcal{L}_{\text {train }}(w, \alpha)\)</span></li>
@@ -246,13 +240,12 @@ class="math inline">\(f^{\prime}\left(x_0\right) \cdot A \approx
 \nabla_{w^{\prime}} \mathcal{L}_{v a l}\left(w^{\prime},
 \alpha\right)\)</span></li>
 </ol></li>
-</ul>
-<ol start="4" type="1">
+</ul></li>
 <li><strong>First-order Approximation:</strong> <span
 class="math inline">\(\xi=0\)</span>, the second-order derivative will
 disappear.</li>
 </ol>
-<h3 id="deriving-discrete-architectures">2.5.4 Deriving Discrete
+<h3 id="deriving-discrete-architectures">1.5.4 Deriving Discrete
 Architectures</h3>
 <ol type="1">
 <li>The strength of an operation is defined as <span
@@ -266,9 +259,9 @@ j)}=\operatorname{argmax}_{o \in \mathcal{O}} \alpha_o^{(i,
 j)}\]</span></li>
 <li>Retain the top-k strongest operations.</li>
 </ol>
-<h3 id="complexity-analysis">2.5.5 Complexity Analysis</h3>
-<h2 id="论文中的实验是如何设计的">2.6 论文中的实验是如何设计的？</h2>
-<h3 id="architecture-search">2.6.1 Architecture Search</h3>
+<h3 id="complexity-analysis">1.5.5 Complexity Analysis</h3>
+<h2 id="论文中的实验是如何设计的">1.6 论文中的实验是如何设计的？</h2>
+<h3 id="architecture-search">1.6.1 Architecture Search</h3>
 <blockquote>
 <p>Search for the cell architectures using DARTS, and determine the best
 cells based on their validation performance <img
@@ -301,7 +294,7 @@ class="math inline">\(ReLU-Conv-BN\)</span>; N = 7 nodes）:
 </ol></li>
 </ol></li>
 </ul>
-<h3 id="architecture-evaluation">2.6.2 Architecture Evaluation</h3>
+<h3 id="architecture-evaluation">1.6.2 Architecture Evaluation</h3>
 <blockquote>
 <p>Use these cells to construct larger architectures, which we train
 from scratch and report their performance on the test set.</p>
@@ -311,8 +304,8 @@ from scratch and report their performance on the test set.</p>
 weights (weights learned during the search process are discarded), train
 it from scratch, and report its performance on the test set.</li>
 </ul>
-<h3 id="parameter-analysis">2.6.3 Parameter Analysis</h3>
-<h4 id="alternative-optimization-strategies">2.6.3.1 Alternative
+<h3 id="parameter-analysis">1.6.3 Parameter Analysis</h3>
+<h4 id="alternative-optimization-strategies">1.6.3.1 Alternative
 Optimization Strategies</h4>
 <ol type="1">
 <li><span class="math inline">\(\alpha\)</span> and <span
@@ -329,7 +322,7 @@ with <span class="math inline">\(w\)</span> (without alteration) using
 <li>Worse than DARTS</li>
 </ul></li>
 </ol>
-<h4 id="search-with-increased-depth">2.6.3.2 Search with Increased
+<h4 id="search-with-increased-depth">1.6.3.2 Search with Increased
 Depth</h4>
 <ol type="1">
 <li>The enlarged discrepancy of the number of channels between
@@ -338,7 +331,7 @@ architecture search and final evaluation.</li>
 hyper-parameters due to the increased number of layers to back-prop
 through</li>
 </ol>
-<h2 id="论文中的实验及结果有没有很好地支持需要验证的科学假设">2.7
+<h2 id="论文中的实验及结果有没有很好地支持需要验证的科学假设">1.7
 论文中的实验及结果有没有很好地支持需要验证的科学假设？</h2>
 <ol type="1">
 <li>Result #1 ：<img
@@ -363,7 +356,7 @@ src="https://image-hosting-service-1318887812.cos.ap-nanjing.myqcloud.com/7-DART
 alt="7-DARTS：Differentiable Architecture Search--20230621" /></li>
 </ol></li>
 </ol>
-<h2 id="这篇论文到底有什么贡献">2.8 这篇论文到底有什么贡献？</h2>
+<h2 id="这篇论文到底有什么贡献">1.8 这篇论文到底有什么贡献？</h2>
 <ol type="1">
 <li>A novel algorithm for differentiable network architecture search
 based on bilevel optimization.</li>
@@ -372,20 +365,20 @@ search achieves highly competitive results and remarkable efficiency
 improvement.</li>
 <li>Transferable architectures learned by DARTS.</li>
 </ol>
-<h2 id="下一步呢有什么工作可以继续深入">2.9
+<h2 id="下一步呢有什么工作可以继续深入">1.9
 下一步呢？有什么工作可以继续深入？</h2>
 <ol type="1">
 <li>Differentiable architecture search on Graph neural networks.</li>
 <li>Parallel DARTS</li>
 </ol>
-</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Haowei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://howiehsu0126.github.io/2023/06/23/DARTS/">http://howiehsu0126.github.io/2023/06/23/DARTS/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://howiehsu0126.github.io">Haowei-Hub</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><a class="post-meta__tags" href="/tags/%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/">经典论文</a><a class="post-meta__tags" href="/tags/%E7%A5%9E%E7%BB%8F%E6%9E%B6%E6%9E%84%E6%90%9C%E7%B4%A2/">神经架构搜索</a></div><nav id="pagination"></nav><div id="lv-container" data-id="city" data-uid="MTAyMC81NDgxNS8zMTI4NQ"><script>(function(d, s) {
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Haowei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://howiehsu0126.github.io/2023/06/23/DARTS/">http://howiehsu0126.github.io/2023/06/23/DARTS/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://howiehsu0126.github.io">Haowei-Hub</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/">经典论文</a><a class="post-meta__tags" href="/tags/%E7%A5%9E%E7%BB%8F%E6%9E%B6%E6%9E%84%E6%90%9C%E7%B4%A2/">神经架构搜索</a></div><nav id="pagination"></nav><div id="lv-container" data-id="city" data-uid="MTAyMC81NDgxNS8zMTI4NQ"><script>(function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];
     if (typeof LivereTower === 'function') { return; }
     j = d.createElement(s);
     j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
     j.async = true;
     e.parentNode.insertBefore(j, e);
-})(document, 'script');</script></div></div></div><footer class="footer-bg" style="background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F5ade6dc8f672ef4555bb5fb4ad3563a633d17faa.jpg&amp;refer=http%3A%2F%2Fi0.hdslb.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1640106300&amp;t=69b0263777fe687cedee393c0b465909)"><div class="layout" id="footer"><div class="copyright">&copy;2021 - 2023 By Haowei</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">AI | Math | English & French | Computer Science | Life</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+})(document, 'script');</script></div></div></div><footer class="footer-bg" style="background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F5ade6dc8f672ef4555bb5fb4ad3563a633d17faa.jpg&amp;refer=http%3A%2F%2Fi0.hdslb.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1640106300&amp;t=69b0263777fe687cedee393c0b465909)"><div class="layout" id="footer"><div class="copyright">&copy;2021 - 2023 By Haowei</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">AI | Math | English & French | Computer Science | Life</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
   $('#nav').addClass('is-mobile')
   $('footer').addClass('is-mobile')
   $('#top-container').addClass('is-mobile')
