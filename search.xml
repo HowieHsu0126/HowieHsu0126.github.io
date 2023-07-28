@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>我是如何把近十页的论文读成半页的</title>
+      <link href="/2023/07/28/%E5%A6%82%E4%BD%95%E6%8A%8A%E8%BF%91%E5%8D%81%E9%A1%B5%E7%9A%84%E8%AE%BA%E6%96%87%E8%AF%BB%E6%88%90%E5%8D%8A%E9%A1%B5/"/>
+      <url>/2023/07/28/%E5%A6%82%E4%BD%95%E6%8A%8A%E8%BF%91%E5%8D%81%E9%A1%B5%E7%9A%84%E8%AE%BA%E6%96%87%E8%AF%BB%E6%88%90%E5%8D%8A%E9%A1%B5/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>相关视频：<a href="https://www.bilibili.com/video/BV1H44y1t75x">李沐：如何读论文</a></p></blockquote><p><img src="https://image.cubox.pro/article/2022011221435313837/25852.jpg"></p><h1 id="阅读流程">1 阅读流程</h1><p>论文通常分为6个部分：Title、Abstract、Introduction (包含Relatedworks)、Method、Experiments、Conclusion。</p><p>沐神建议大家分三遍来读一篇论文。</p><p><strong>第一遍，目的是大概知道论文在讲什么，适不适合自己</strong>。先读一下标题和摘要，了解论文在做什么，再直接看结论，虽然大部分都是重复的，但也会把摘要里提到的问题用实际结论再证明一下。再去瞄一眼关键的图和表。这一遍大概要十几分钟，如果确定适合自己，就可以开始第二遍。^6b6147</p><p><strong>第二遍，通读一遍文章，目的是了解文章解决了什么问题</strong>，用了什么方法，搞清楚重要的图和表都在干什么，相比别人的方法有什么优点。读的时候可以把有用的东西圈出来，比如重要的参考文献、不懂的句子。这一遍不用特别细节，一些公式和证明可以略过。这遍读完后，如果觉得这份工作对自己有价值，可以继续第三遍的精读。^316a4a</p><p><strong>第三遍，知道每一段每一句都在干什么，把自己放到作者的位置</strong>，开始思考自己如何去解决这个问题，如何设计实验，能不能做得更好，或者哪些地方可以继续深入。这样以后基于这份工作扩展，或者使用这个方法的时候就会更自如。^cb9342</p><p>以上就是视频中分享的方法，我的整体差不多，只是不同场景会有diff。一类场景是某类论文的集中调研，可能是项目要落地，也可能是要做research，总之会有个大概的领域和任务限定；另一类场景是随便读读，毕竟周围的人都读，不进则退，被迫好学。下面就分这两个场景介绍一下我的方法。</p><h1 id="有方向的调研">2 有方向的调研</h1><p>首先是<strong>怎么找论文</strong>，这是我后台经常收到的问题。在做research之前一定要调研充分，否则论文都写了一半发现跟之前的撞了，或者审稿人直接给你丢过来一篇就很尴尬。找论文可以从以下四方面：</p><ol type="1"><li><p>先去搜索最近的该领域综述，综述读下来就对该领域有初步理解，知道了历史SOTA</p></li><li><p>最近一两年的顶会（NLP比如ACL、NAACL、EMNLP、AAAI、ICLR等），去他们公开的paperlist按关键词搜索。怎么找关键词？从之前看的综述里面找</p></li><li><p>在GoogleScholar等搜索引擎搜关键词，顶会毕竟有几个月的延迟，可能人家先挂出来了</p></li><li><p>用上面的方法读了几篇之后，去看他们RelatedWorks、实验对比里的其他方法，基本都是该领域有代表性的</p></li></ol><p>之后是<strong>怎么筛选论文，优先看知名会议、机构、作者的文章，一般来说质量还是有保障的</strong>。其他的就用沐神的方法先快速扫一下，没价值就不看了。</p><p>最后就是读论文了：</p><ol type="1"><li><p><strong>既然是有方向的调研，就要调研出体系，这个领域有几种问题，每种问题都有什么解决办法，对比起来有什么优缺点</strong></p></li><li><p>如果是自己要follow的方法，实验分析环节要仔细的看，怎么处理的数据，用了什么超参数等</p></li><li><p>如果要发自己的文章，就要更精细地看一下其他paper都是怎么讲的motivation和contribution</p></li></ol><p>怎么样想新的idea？就像沐神说的那样，<strong>用作者思维去思考</strong>，读个一二十篇就能有些感觉。想第一次就发一篇惊世巨作太难了，更多的人还是先follow前人的工作，从其他领域借鉴一些改动，并学习英文的写作方式。所以<strong>不要自己干想</strong>。</p><p>之后读论文的方法就差不多了。熟能生巧，当对特定领域的论文+偶尔思考超过一定数量之后（感觉自己也就读了不到100篇吧），速度一下就能上去。<strong>我速读时的attention主要在</strong>：</p><ol type="1"><li><p>Abstract的重点（也就两三句话）</p></li><li><p>Introduction中作者提出motivation和contribution那里</p></li><li><p>Related works里列的方法</p></li><li><p>Method里面的图表和说明（不太复杂的方法就那么几句话，数据集也都是常见那些）</p></li><li><p>Experiments里面的主实验、消融实验和其他有趣的分析</p></li></ol><p><strong>这么算下来，一篇方法不复杂的论文半页纸就能讲清楚，所有故事都能概括成起因经过结果</strong>。</p><p>当然如果要写出来分享给大家，我会把自己放在作者思维再琢磨一下，<strong>想想模型处理的细节、哪里不严谨</strong>，再去文中找对应的解释。</p><h1 id="随便看看">3 随便看看</h1><ol type="1"><li><p>Arxiv网站每天都会更新大家上传的论文</p></li><li><p>顶会paper list也可以刷刷</p></li></ol><p>之后读论文的方法就差不多了。熟能生巧，当对特定领域的论文+偶尔思考超过一定数量之后（感觉自己也就读了不到100篇吧），速度一下就能上去。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 科研素养 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 科研素养 </tag>
+            
+            <tag> 读 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Representing Long-Range Context for Graph Neural Networks with Global Attention</title>
       <link href="/2023/07/27/Representing%20Long-Range%20Context%20for%20Graph%20Neural%20Networks%20with%20Global%20Attention/"/>
       <url>/2023/07/27/Representing%20Long-Range%20Context%20for%20Graph%20Neural%20Networks%20with%20Global%20Attention/</url>
