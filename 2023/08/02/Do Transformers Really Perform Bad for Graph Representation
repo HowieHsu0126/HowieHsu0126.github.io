@@ -278,7 +278,7 @@ features of its two nodes.</li>
 in Graphormer</h3>
 <blockquote>
 <p>To leverage the structural information of graphs into the Transformer
-model.</p>
+model. <img src="https://image-hosting-service-1318887812.cos.ap-nanjing.myqcloud.com/20230802113734.png" alt="image.png"></p>
 </blockquote>
 <ol type="1">
 <li>Centrality Encoding（Node importance）
